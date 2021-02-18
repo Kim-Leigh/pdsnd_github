@@ -15,6 +15,11 @@ This project makes use of Python to explore data realted to **bike share** syste
 This code code to imports the data and provides descriptive statistics about the data. 
 It also takes in _raw input_ from the user to create an interactive experience in the terminal to present these statistics.
 
+### Getting started
+Software you will need:
+* Python 3, NumPy, and pandas installed using Anaconda
+* A text editor, like Sublime or Atom.
+* A terminal application (Terminal on Mac and Linux or Cygwin on Windows)
 
 ### Files used
 Data files used:
