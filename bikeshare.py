@@ -16,7 +16,7 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    # gets user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
+    # gets user input for city (chicago, new york city, washington) 
     while True:
         city = input('Would you like to see data from Chicago, New York City, or Washington?\n').lower()
         if city in (CITY_DATA):
@@ -63,14 +63,14 @@ def load_data(city, month, day):
     """
     # load data file into a dataframe
     df = pd.read_csv(CITY_DATA[city])
-    # convert the Start Time column to datetime
+    # convert the start time column to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
-    # extract month and day of week from Start Time to create new columns
+    # extract month and day of week from start time, creates new columns
     df['month'] = df['Start Time'].dt.month
     df['day_of_week'] = df['Start Time'].dt.weekday_name
     # filter by month if applicable
     if month != 'all':
-        # use the index of the months list to get the corresponding int
+        # use index of months list to get the corresponding int
         months = ['january', 'february', 'march', 'april', 'may', 'june']
         month = months.index(month) + 1
         # filter by month to create the new dataframe
@@ -87,15 +87,15 @@ def time_stats(df):
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
 
-    # display the most common month
+    # display most common month
     common_month = df['month'].mode()[0]
     common_month = calendar.month_name[common_month]
     print('The most popular month is: {}.\n'.format(common_month))
-    # display the most common day of week
+    # display most common day of week
     common_day = df['day_of_week'].mode()[0]
     print('The most popular day of the week is: {}.\n'.format(common_day))
-    # display the most common start hour
-    # extract hour from the Start Time column to create an hour column
+    # display most common start hour
+    # extract hour from the start time column, creates hour column
     df['hour'] = df['Start Time'].dt.hour
     common_hour = df['hour'].mode()[0]
     print('The most popular start time is: {}.\n'.format(common_hour))
@@ -148,19 +148,19 @@ def user_stats(df):
     print('\nCalculating User Stats...\n')
     start_time = time.time()
 
-    # Display counts of user types
+    # display counts of user types
     user_types = df['User Type'].value_counts()
     print('The counts of the user types are:\n', user_types)
 
     try:
-        # Display counts of gender
+        # display counts of gender
         gender_count = df['Gender'].value_counts()
         print('\nThe counts per gender are:\n', gender_count)
     except KeyError:
         print('\nNo gender data available for the selected city.')
 
     try:
-        # Display earliest, most recent, and most common year of birth
+        # display earliest, most recent, and most common year of birth
         earliest_year = df['Birth Year'].min()
         print('\nThe earliest birth year is: {}.\n'.format(earliest_year))
         latest_year = df['Birth Year'].max()
